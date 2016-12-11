@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+   <meta charset="utf-8">
+   <!-- Pone un icono en la pestaña -->
+   <link rel="shortcut icon" href="../img/iconHotel.png">
+
+   {include file='componentes/estilos.html'}
+
+    <title>FORMULARIO USUARIO</title>
+  </head>
+  <body>
+
+      <!-- contenedor principal -->
+      <div id="wrapper">
+         {$header}
+
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_usuario)}
+                  <h1>EDICION DE USUARIO</h1>
+                  {else}
+                  <h1>NUEVO USUARIO</h1>
+                {/if}
+                <br>
+          </div>
+
+          <div class="formulario ">
+              <h1>Formulario Usuario </h1>
+
+                <form class="form-horizontal" method="POST" data-toggle="validator" role="form" action="usuario.php?accion={if isset($id_usuario)}guardar{else}alta{/if}">
+
+                    <div class="form-group">
+                      <label for="inputName" class="col-sm-2 control-label">EMAIL</label>
+                      <div class="col-sm-10">
+                          <input type="email" class="form-control" placeholder="Escribe un Email" required name="email" {if isset($id_usuario)} value="{$usuario.email}"{/if} >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputPassword" class="col-sm-2 control-label">CONTRASEÑA</label>
+                      <div class="col-sm-10">
+                          <input type="password" class="form-control" data-minlength="3"  id="inputPassword" placeholder="Escribe una contraseña" required name="contrasena" >
+                      </div>
+                    </div>
+
+                    {if isset($id_usuario)}
+                        <input type="hidden" name="id_usuario" value="{$id_usuario}"> {/if}
+
+                    <div class="form-group">
+                      <div class="enviar">
+                              <p> <input class=button type="submit" value="Añadir"></p>
+                      </div>
+                    </div>
+                </form>
+            </div>
+              {include file='componentes/footer.html'}
+        </div>
+
+     {include file='componentes/js.html'}
+</body>
+</html>

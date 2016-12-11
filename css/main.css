@@ -1,0 +1,347 @@
+/**HOJA DE ESTILOS PARA  HOTEL*/
+*{
+  margin: 0;
+  padding:0;
+}
+
+
+body{
+  width: 100%;
+  background:#e6e6e6;
+  text-align: center;
+  background-image:  url("../img/fondo.jpg");
+}
+
+/**CONTENEDOR PRINCIPAL*/
+#wrapper
+{
+  width:975px;
+  margin: auto;
+  overflow:hidden;
+}
+
+.formulario
+{
+  margin: auto;
+  padding: 0px;
+  width: 90%;
+  font-family: Arial;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  border-radius: 8px;
+  height:100%;
+  text-align: left;
+}
+
+.formulario h1
+{
+  color:#ecf0f1;
+}
+
+.jumbotron.fm h1
+{
+  background:#428BCA;
+  color:#FFF;
+
+}
+
+.Encabezado
+{
+    margin: 5px auto;
+    padding: 20px auto;
+    width: 100%;
+}
+
+.Encabezado h1,h2
+{
+  font-family: Helvetica, Geneva, Arial, sans-serif;
+  background:#2980b9;
+  color:#ecf0f1;
+  text-align: center;
+  border-radius:10px;
+}
+
+/******************************************************************************************
+                                ESTILO PARA ENCABEZADOS
+******************************************************************************************/
+h1
+{
+  font-family: Helvetica, Geneva, Arial, sans-serif;
+  background:#2980b9;
+  color:#ecf0f1;
+  text-align: center;
+  border-radius:10px;
+}
+
+h2
+{
+     font-family: Helvetica, Geneva, Arial, sans-serif;
+     background:#3498db;
+     color:#ecf0f1;
+}
+
+/******************************************************************************************
+                                ESTILO PARA LAS TABLAS
+******************************************************************************************/
+table
+{
+    border-collapse: collapse;
+    width: 97%;
+    font-size:12px;
+    font-family: Helvetica, Geneva, Arial, sans-serif;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 0 auto;   /**Centra la tabla en el contenedor*/
+
+}
+
+th
+{   text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+th, td
+{
+  padding: 8px;
+  font-size:14px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+/******************************************************************************************
+                                ESTILO PARA EL BOTON
+******************************************************************************************/
+.button
+{
+  background-color:#8870FF;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+  }
+
+.button:hover
+{
+  background-color: #897FBA;
+  color: white;
+  text-decoration: none;
+}
+
+
+
+/*************************************************************************************
+                                ESTILOS PARA LOS IMPUTS
+**************************************************************************************/
+
+.formulario form
+{
+  padding: 20px 20px;
+  margin: 60px 10px; /*asigna un pequeño espacio entre elementos**/
+}
+.formulario label
+{
+  font-family: Helvetica, sans-serif;
+  color:#009688;
+  font-weight:bold;
+}.input:not(:valid)~.w3-validate{color:#f44336}
+
+
+.formulario select
+{
+  padding:9px 0;
+  width:25%;
+  color:#000;
+  border:1px solid transparent;
+  border-bottom:1px solid #009688;
+  font-family: Helvetica, sans-serif;
+}
+
+.formulario select select:focus
+{
+  color:#000;border:1px solid #009688
+}.select option[disabled]{color:#009688}
+
+
+.enviar
+{
+    text-align: center;
+    margin: 40px 10px; /*asigna un pequeño espacio entre elementos**/
+}
+
+
+
+/******************************************************************************************
+                                ESTILO PARA LOS CONTENEDORES
+******************************************************************************************/
+/**contenedor para crear un nuevo cliente */
+.alta
+{
+  text-align: center;
+  padding: 20px;
+  margin: 0px;
+}
+
+section
+{
+  width: 60%;
+  margin-right:1.5%;
+  float:left;
+  background:#fff;
+  padding: 10px;
+  border-radius:10px;
+}
+aside
+{
+  width: 30%;
+  background: #90C695;
+  float: left;
+  font-family: 'Comic Sans MS';
+	font-size: 12px;
+  text-align: center;
+  border-radius:10px;
+  height: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+/******************************************************************************************
+                                ESTILO PARA LAS SECCIONES DEL FOOTER
+******************************************************************************************/
+footer
+{
+  /**Color azul*/
+  background: #282830;
+  color: #fff;
+  clear: both; /**limpia los rastros de los float*/
+  padding: 10px 0px;
+  text-align: center;
+  border-radius:10px;
+  height:200px;
+  margin: 10px 10px; /*asigna un pequeño espacio entre elementos**/
+}
+
+#aviso a   /**para modificar los hipervinculos*/
+{
+  width: 60%;
+  float: left;
+  margin:auto;
+  text-align: left;
+  text-decoration: none;
+}
+
+#direccion
+{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  float: left;
+  font-family: Helvetica, Geneva, Arial, sans-serif;
+  font-weight:bolder;
+  color:  rgba(255,255,255,.6);
+
+}
+
+#privacidad
+{
+  width:60%;
+  float: left;
+  text-align: center;
+  float: left;
+}
+
+
+#redes
+{
+  width: 31%;
+  float: right;
+  text-align: center;
+}
+
+
+#enlaces
+{
+  font-family: Helvetica, Geneva, Arial, sans-serif;
+  background: rgba(0,0,0,.1);
+  border-color: rgba(255,255,255,.1);
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 10px; /*asigna un pequeño espacio entre elementos**/
+
+
+}
+
+#enlaces a
+{
+
+  text-decoration: none;
+  font-weight:bolder;
+  font-size: 20px
+}
+
+/******************************************************************************************
+                                ESTILO PARA LAS REDES SOCIALES
+******************************************************************************************/
+.social_bookmarks_container
+{
+width:100%;
+height:65px;
+padding:0;
+position:relative;
+}
+.social_bookmarks {
+position:relative;
+float:left;
+margin:0;
+padding:0;
+}
+.social_bookmarks li {
+margin:0 0 1px 1px;
+height:57px;
+width:57px;
+list-style:none;
+float:left;
+padding:0;
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+-ms-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+}
+.social_bookmarks li a {
+float:left;
+width:57px;
+line-height:24px;
+display: block;
+text-indent: -99999px;
+margin:0px;
+outline: none;
+padding:0;
+min-height:57px;
+height:100%;
+text-decoration:none;
+}
+.social_bookmarks .iconrss{background: #A4A4A4 url(../img/social/icon-rss.png) top left no-repeat;}
+.social_bookmarks .iconrssmail{background: #BDBDBD url(../img/social/icon-rssmail.png) top left no-repeat;}
+.social_bookmarks .icontwitter{background: #D8D8D8 url(../img/social/twitter.png) top left no-repeat;}
+.social_bookmarks .iconfacebook{background: #E6E6E6 url(../img/social/icon-facebook.png) top left no-repeat;}
+.social_bookmarks .icongplus{background: #F1F1F1 url(../img/social/icon-gplus.png) top left no-repeat;}
+.social_bookmarks .iconfacebook:hover{background-position:center -57px; background-color: #37589b;}
+.social_bookmarks .icontwitter:hover {background-position:center -57px; background-color: #46d4fe;}
+.social_bookmarks .icongplus:hover {background-position:center -57px; background-color: #de5a49;}
+.social_bookmarks .iconrss:hover{background-position:center -57px; background-color: #ff6600;}
+.social_bookmarks .iconrssmail:hover{background-position:center -57px; background-color: #FFDE00;}
+.social_bookmarks li:hover a{background: transparent url(//lh4.googleusercontent.com/-XNviZ_JqvyU/U4vDMDFAX8I/AAAAAAAALLk/E4VIJr1onlo/s57/icon-social-reflect.png) no-repeat;
+}

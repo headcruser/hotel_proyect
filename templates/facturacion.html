@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Pone un icono en la pestaña -->
+    <link rel="shortcut icon" href="../img/iconHotel.png">
+
+      <!--hoja de estilos -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css" >
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
+
+    <title>cotizacion</title>
+  </head>
+<body>
+
+    <div id="wrapper">
+      {$header}
+
+
+      <div id="contenedor">
+      <h1>Lista de reportes Eléctronicos</h1>
+
+                <!--MUESTRA LA TABLA DE CLIENTESS -->
+              <table class="table"  CELLSPACING=1  >
+
+                <tr ALIGN=center>
+                  <th >Nombre </th>
+                  <th> RFC</th>
+                  <th> EMAIL</th>
+                  <th>PDF</th>
+                </tr>
+
+                {foreach $detalle as $elemento}
+                <tr ALIGN=center>
+                  <td>{$elemento.nombre}</td>
+                  <td> {$elemento.rfc}</td>
+                  <td> {$elemento.email}</td>
+                  <td>
+                    <a  href="facturacion.php?accion=imprimir&id_cliente={$elemento.id_cliente}">
+                      <img src="../img/pdf.png" >
+                    </a>
+                  </td>
+                </tr>
+                {/foreach}
+            </table>
+
+
+            </div>
+            {include file='componentes/footer.html'}
+    </div>
+    <!-- CODIGO JAVASCRIPT -->
+    {include file='componentes/js.html'}
+</body>
+</html>

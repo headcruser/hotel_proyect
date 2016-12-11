@@ -1,0 +1,64 @@
+<!-- Vista de los privilegios -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Pone un icono en la pestaña -->
+    <link rel="shortcut icon" href="../img/iconHotel.png"> 
+    
+     {include file='componentes/estilos.html'}
+
+    <title>{$titulo}</title>
+  </head>
+<body>
+
+    <div id="wrapper">
+      {$header}
+      
+      <div id="contenedor">
+      <h1>{$titulo}</h1>
+
+                <!--MUESTRA LA TABLA DE CLIENTESS -->
+              <table class="table"  CELLSPACING=1  >
+
+                <tr ALIGN=center>
+                  <th >ID_PRIVILEGIO </th>
+                  <th>PRIVILEGIO</th>
+                  <th>Ver</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                </tr>
+
+                {foreach $privilegio as $elemento}
+                <tr ALIGN=center>
+                  <td>{$elemento.id_privilegio}</td>
+                  <td> {$elemento.privilegio}</td>
+                  <td> <img src="../img/report.png" ></td>
+                  <td>
+                    <a href="privilegio.php?accion=editar&id_privilegio={$elemento.id_privilegio}">
+                      <img src="../img/lapiz.png" >
+                  </td>
+                    </a>
+                  <td>
+                    <a  href="privilegio.php?accion=eliminar&id_privilegio={$elemento.id_privilegio}">
+                      <img src="../img/cancel.png" >
+                    </a>
+                  </td>
+                </tr>
+                {/foreach}
+            </table>
+
+                <div class="alta">
+                  <form >
+                      <!--<input class=button type=submit value="alta" name="accion">-->
+                      <a  class=button href="privilegio.php?accion=nuevo">NUEVO PRIVILEGIO</a>
+                  </form>
+                </div>
+            </div>
+      {include file='componentes/footer.html'}
+    </div>
+
+     {include file='componentes/js.html'}
+</body>
+</html>

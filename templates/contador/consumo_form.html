@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO CONSUMO </title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_consumo )}
+                  <h1>EDICION DE CONSUMO</h1>
+                  {else}
+                  <h1>NUEVO CONSUMO</h1>
+                {/if}
+                <br>
+            </div>
+
+
+
+            <div class="formulario">
+                <h1>Formulario Habitacion </h1>
+
+
+                <form class="form-horizontal" method="POST" action="admConsumo.php?accion={if isset($id_consumo)}guardar{else}alta{/if}">
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Seleccione Reservacion</label>
+                        <div class="col-sm-10">
+                         {$comboReserva}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Seleccione Producto</label>
+                        <div class="col-sm-10">
+
+                        {$comboProducto}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Cantidad</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" placeholder="Cantidad del consumo" required name="cantidad" {if isset($id_consumo)} value="{$consumos.cantidad}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Precio de venta</label>
+                        <div class="col-sm-10">
+                          <input class="form-control" type="text" name="precioVenta" placeholder="Asigna un precio de venta" required {if isset($id_consumo)} value="{$consumos.precioVenta}"{/if}/>
+                        </div>
+                    </div>
+
+                   {if isset($id_consumo)}
+                    <input type="hidden" name="id_consumo" value="{$id_consumo}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit"></p>
+                  </div>
+
+              </form>
+           </div>
+            {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

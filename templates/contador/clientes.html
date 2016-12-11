@@ -1,0 +1,73 @@
+
+<!-- vista de clientes del hotel -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Pone un icono en la pestaña -->
+    <link rel="shortcut icon" href="../img/iconHotel.png">
+
+    {include file='componentes/estilos.html'}
+    <!-- Hoja de estilos -->
+
+
+    <title>{$titulo}</title>
+  </head>
+
+  <!-- Body -->
+  <body>
+
+  <!-- Contenedor principal -->
+  <div id="wrapper">
+    {$header}
+
+    <div id="contenedor">
+      <h1>{$titulo}</h1>
+
+       <!--MUESTRA LA TABLA DE CLIENTESS -->
+            <table class="table" CELLSPACING=1 >
+
+              <tr ALIGN=center>
+                <th>Nombre</th>
+                <th>Rfc</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+
+              {foreach $clientes as $cliente}
+              <tr ALIGN=center>
+                <td>{$cliente.nombre}</td>
+                <td> {$cliente.rfc}</td>
+                <td> {$cliente.direccion}</td>
+                <td> {$cliente.telefono}</td>
+                <td> <img src="../img/report.png" ></td>
+                <td>
+                  <a href="admclientes.php?accion=editar&id_cliente={$cliente.id_cliente}">
+                    <img src="../img/lapiz.png" >
+                </td>
+                  </a>
+                <td>
+                  <a  href="admClientes.php?accion=eliminar&id_cliente={$cliente.id_cliente}">
+                    <img src="../img/cancel.png" >
+                  </a>
+                </td>
+              </tr>
+              {/foreach}
+          </table>
+
+      <div class="alta">
+        <form >
+            <a  class=button href="admClientes.php?accion=nuevo">NUEVO CLIENTE</a>
+        </form>
+      </div>
+
+    </div>
+     {include file='componentes/footer.html'}
+  </div>
+    {include file='componentes/js.html'}
+  </body>
+</html>

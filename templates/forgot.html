@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png">
+      <title>Login</title>
+      <link rel="stylesheet" type="text/css" href="../css/login.css" >
+      <link rel="stylesheet" type="text/css" href="../css/flat.css" >
+      <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" >
+      <link rel="stylesheet" type="text/css" href="../css/main.css" >
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div id="wrapper">
+
+    {if isset($header)}
+      {$header}
+    {/if}
+
+
+  <div class="container well" id="sha" >
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Recuperacion de contraseña</h3>
+          </div>
+       </div>
+
+      <form class="login" method="POST" action="forgot.php?accion=validar">
+
+        {if isset ($valido) }
+
+          <div class="media">
+              <div class="panel panel-success" role="alert">
+                  <strong> El correo electronico ha sido verificado </strong>
+                    {$valido}
+              </div>
+          </div>
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+                <a href="login.php"> <strong> Volver </strong></a>
+            </div>
+          </div>
+       {else}
+
+        <div class="form-group">
+            <input type="email" class="form-control" name="correo" placeholder="Correo Electronico"  required autofocus >
+       </div>
+
+        <div class="form-group">
+              <div class="enviar">
+                  <p> <input class="btn btn-primary btn-lg active" type="submit"  name="recuperar"></p>
+              </div>
+        </div>
+
+       {/if}
+      </form>
+
+      {if isset($invalido)}
+        <div class="media">
+            <div class="alert alert-danger" role="alert">
+            <strong> ATENCION:</strong>
+            {$invalido}
+            </div>
+        </div>
+      {/if}
+  </div>
+
+  {include file='componentes/footer.html'}
+  </div>
+</body>
+</html>

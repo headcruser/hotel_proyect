@@ -1,0 +1,60 @@
+<!-- vista de las habitaciones -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+    {include file='componentes/estilos.html'}
+    <title>FORMULARIO HABITACION </title>
+</head>
+
+<body>
+  <div id="wrapper">
+    {$header}
+    <div class="contenedor">
+      <h1>{$titulo}</h1>
+
+      <!--MUESTRA LA TABLA DE HABITACIONES -->
+        <table class="table" CELLSPACING=1 >
+
+          <tr ALIGN=center>
+            <th>Numero </th>
+            <th>Piso</th>
+            <th>Precio Diario</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+
+          {foreach $habitaciones as $habitacion}
+          <tr ALIGN=center>
+            <td>{$habitacion.numero}</td>
+            <td> {$habitacion.piso}</td>
+            <td> {$habitacion.precioDiario}</td>
+            <td> <img src="../img/report.png" ></td>
+            <td>
+              <a href="admHabitacion.php?accion=editar&id_habitacion={$habitacion.id_habitacion}">
+                <img src="../img/lapiz.png" >
+            </td>
+              </a>
+            <td>
+              <a  href="admHabitacion.php?accion=eliminar&id_habitacion={$habitacion.id_habitacion}">
+                <img src="../img/cancel.png" >
+              </a>
+            </td>
+          </tr>
+          {/foreach}
+      </table>
+          <div class="alta">
+            <form >
+                <!--<input class=button type=submit value="alta" name="accion">-->
+                <a  class=button href="admHabitacion.php?accion=nuevo">NUEVA HABITACION</a>
+            </form>
+
+          </div>
+    </div>
+    {include file='componentes/footer.html'}
+</div>
+{include file='componentes/js.html'}
+</body>
+</html>

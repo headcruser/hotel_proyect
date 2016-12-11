@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png">
+      <title>Login</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="../css/main.css" >
+      <link rel="stylesheet" type="text/css" href="../css/login.css" >
+      {include file='componentes/estilos.html'}
+
+</head>
+<body>
+
+
+    <div id="wrapper">
+      {if isset($header)}
+        {$header}
+      {/if}
+
+
+     <div id="contenedor">
+
+          {if isset($mensaje)}
+          <div class="media">
+            <div class="alert alert-danger" role="alert">
+            <strong> ERROR:</strong>
+            {$mensaje}
+            </div>
+          </div>
+          {/if}
+
+          {if isset($msg)}
+          <div class="media">
+            <div class="alert alert-success" role="alert">
+            <strong> Perfecto ¡¡:</strong>
+            {$msg}
+            </div>
+          </div>
+          {/if}
+
+
+          <div class="container well" id="sha">
+
+              <!-- Avatar -->
+              <div class="row">
+                  <div class="col-xs-12">
+                    <img src="../img/avatar.png" class="img-responsive" id="avatar">
+                  </div>
+              </div>
+
+              {if isset($titulo)}
+                  <h1 class="titulo">{$titulo}</h1>
+                  {else}
+                  <h1 class="titulo">Hotel Dumort</h1>
+                {/if}
+
+                <!-- Formulario login -->
+                  <form class="login" method="POST" action="login.php?accion=login">
+
+                      <!-- Email -->
+                      <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required autofocus>
+                      </div>
+
+                      <!-- Password -->
+                      <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" minlength="3" required>
+                      </div>
+
+                        <!-- Boton  -->
+                      <div class="form-group">
+                        <div class="enviar">
+                                <p> <input class="btn btn-lg btn-primary btn-block" type="submit" value="INGRESAR"></p>
+                        </div>
+                      </div>
+
+                      <!-- Olvidaste tu contraseña -->
+                      <div class="checkbox">
+                          <p class="help-block"><a href="forgot.php">¿Olvidaste tu contraseña </a></p>
+                      </div>
+                </form>
+          </div>
+        </div>
+        {include file='componentes/footer.html'}
+  </div>
+        {include file='componentes/js.html'}
+
+</body>
+</html>

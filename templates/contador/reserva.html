@@ -1,0 +1,59 @@
+<!-- vista reservas -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../img/iconHotel.png">  <!-- Pone un icono en la pestaña -->
+    <title>{$titulo}</title>
+    {include file='componentes/estilos.html'}
+
+  </head>
+    <body>
+            <div id="wrapper">
+              {$header}
+
+                  <div id="contenedor">
+                    <h1>{$titulo}</h1>
+
+                        <!--MUESTRA LA TABLA -->
+                    <table class="table" CELLSPACING=1 >
+
+                      <tr ALIGN=center>
+                        <th>Fecha de Reserva</th>
+                        <th>Costo de Alojamiento</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                      </tr>
+
+                      {foreach $reservas as $elemento}
+                      <tr ALIGN=center>
+                        <td>{$elemento.fechaReserva}</td>
+                        <td> {$elemento.costoAlojamiento}</td>
+                        <td> <img src="../img/report.png" ></td>
+                        <td>
+                          <a href="admReserva.php?accion=editar&id_reserva={$elemento.id_reserva}">
+                            <img src="../img/lapiz.png" >
+                        </td>
+                          </a>
+                        <td>
+                          <a  href="admReserva.php?accion=eliminar&id_reserva={$elemento.id_reserva}">
+                            <img src="../img/cancel.png" >
+                          </a>
+                        </td>
+                      </tr>
+                      {/foreach}
+                  </table>
+
+                    <div class="alta">
+                      <form  >
+                          <a  class=button href="admReserva.php?accion=nuevo">NUEVA RESERVACION</a>
+                      </form>
+                    </div>
+                  </div>
+            {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+
+  </body>
+</html>

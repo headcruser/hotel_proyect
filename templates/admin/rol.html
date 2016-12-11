@@ -1,0 +1,65 @@
+<!-- Vista Rol -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- Pone un icono en la pestaña -->
+    <link rel="shortcut icon" href="../img/iconHotel.png"> 
+    
+    {include file='componentes/estilos.html'}
+
+    <title>Roles disponibles</title>
+</head>
+<body>
+
+    <div id="wrapper">
+      {$header}
+
+      <div id="contenedor">
+      <h1>{$titulo}</h1>
+
+                <!--MUESTRA LA TABLA DE CLIENTESS -->
+              <table class="table"  CELLSPACING=1  >
+
+                <tr ALIGN=center>
+                  <th >id Rol </th>
+                  <th>Rol</th>
+                  <th>Ver</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                </tr>
+
+                {foreach $rol as $elemento}
+                <tr ALIGN=center>
+                  <td>{$elemento.id_rol}</td>       
+                  <td> {$elemento.rol}</td>
+                  <td> <img src="../img/report.png" ></td>
+                  <td>
+                    <a href="rol.php?accion=editar&id_rol={$elemento.id_rol}">
+                      <img src="../img/lapiz.png" >
+                  </td>
+                    </a>
+                  <td>
+                    <a  href="rol.php?accion=eliminar&id_rol={$elemento.id_rol}">
+                      <img src="../img/cancel.png" >
+                    </a>
+                  </td>
+                </tr>
+                {/foreach}
+            </table>
+
+                  <!--INSERTA UN NUEVO CLIENTE-->
+
+                <div class="alta">
+                  <form >
+                      <!--<input class=button type=submit value="alta" name="accion">-->
+                      <a  class=button href="rol.php?accion=nuevo">NUEVO ROL</a>
+                  </form>
+                </div>
+            </div>
+      {include file='componentes/footer.html'}
+    </div>
+    {include file='componentes/js.html'}
+
+</body>
+</html>

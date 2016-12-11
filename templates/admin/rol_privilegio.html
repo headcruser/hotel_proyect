@@ -1,0 +1,64 @@
+<!-- Vista de rol-privilegio -->
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <!-- Pone un icono en la pestaña -->
+      <link rel="shortcut icon" href="../img/iconHotel.png">
+
+      {include file='componentes/estilos.html'}
+      <title>Rol-Privilegio</title>
+  </head>
+<body>
+
+    <div id="wrapper">
+      {$header}
+
+
+      <div id="contenedor">
+      <h1>{$titulo}</h1>
+
+                <!--MUESTRA LA TABLA DE -->
+              <table class="table-condensed"  CELLSPACING=1  >
+
+                <tr ALIGN=center>
+                  <th >ROL </th>
+                  <th>PRIVILEGIO</th>
+                  <th>VER</th>
+                  <th>EDITAR</th>
+                  <th>ELIMINAR</th>
+                </tr>
+
+                {foreach $rol as $elemento}
+                <tr ALIGN=center>
+                  <td>{$elemento.rol}</td>
+                  <td> {$elemento.privilegio}</td>
+
+                  <td> <img src="../img/report.png" ></td>
+                  <td>
+                    <a href="rol_privilegio.php?accion=editar&id_rol={$elemento.id_rol}&id_privilegio={$elemento.id_privilegio}">
+                      <img src="../img/lapiz.png" >
+                  </td>
+                    </a>
+                  <td>
+                    <a  href="rol_privilegio.php?accion=eliminar&id_rol={$elemento.id_rol}&id_privilegio={$elemento.id_privilegio}">
+                      <img src="../img/cancel.png" >
+                    </a>
+                  </td>
+                </tr>
+                {/foreach}
+            </table>
+
+
+                <div class="alta">
+                  <form >
+                      <a  class=button href="rol_privilegio.php?accion=nuevo">Nueva Asignación</a>
+                  </form>
+                </div>
+            </div>
+      {include file='componentes/footer.html'}
+    </div>
+
+  {include file='componentes/js.html'}
+</body>
+</html>

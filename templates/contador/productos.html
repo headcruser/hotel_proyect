@@ -1,0 +1,60 @@
+<!-- Vista de los productos  -->
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png">
+      {include file='componentes/estilos.html'}
+      <title>Productos</title>
+  </head>
+<body>
+  <div id="wrapper">
+    {$header}
+
+    <div class="contenedor">
+      <h1>{$titulo}</h1>
+      <!--MUESTRA LA TABLA DE CLIENTESS -->
+        <table  class="table" CELLSPACING=1 >
+
+          <tr ALIGN=center>
+            <th>Nombre </th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Unidad de Medida</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+
+          {foreach $productos as $producto}
+          <tr ALIGN=center>
+            <td>{$producto.nombre}</td>
+            <td> {$producto.descripcion}</td>
+            <td> {$producto.precio}</td>
+            <td> {$producto.Medida}</td>
+            <td> <img src="../img/report.png" ></td>
+            <td>
+              <a href="admProducto.php?accion=editar&idProducto={$producto.idProducto}">
+                <img src="../img/lapiz.png" >
+            </td>
+              </a>
+            <td>
+              <a  href="admProducto.php?accion=eliminar&idProducto={$producto.idProducto}">
+                <img src="../img/cancel.png" >
+              </a>
+            </td>
+          </tr>
+          {/foreach}
+      </table>
+
+          <div class="alta">
+            <form>
+                <a  class=button href="admProducto.php?accion=nuevo">NUEVO PRODUCTO</a>
+            </form>
+          </div>
+          {include file='componentes/footer.html'}
+    </div>
+{include file='componentes/js.html'}
+</div>
+</body>
+</html>

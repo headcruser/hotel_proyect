@@ -1,0 +1,59 @@
+<!-- vista de pagos del sistema -->
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO ESTADOS DE REFERENCIA</title>
+  </head>
+
+<body>
+  <div id="wrapper">
+    {$header}
+    <div class="contenedor">
+      <h1>{$titulo}</h1>
+
+      <!--MUESTRA LA TABLA DE HABITACIONES -->
+        <table class="table" CELLSPACING=1 >
+
+          <tr ALIGN=center>
+            <th>Iva </th>
+            <th>Fecha de emision</th>
+            <th>Fecha de pago</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+
+          {foreach $pagos as $elemento}
+          <tr ALIGN=center>
+            <td>{$elemento.iva}</td>
+            <td> {$elemento.fechaEmision}</td>
+            <td> {$elemento.fechaPago}</td>
+            <td> <img src="../img/report.png" ></td>
+            <td>
+              <a href="admPago.php?accion=editar&id_pago={$elemento.id_pago}">
+                <img src="../img/lapiz.png" >
+            </td>
+              </a>
+            <td>
+              <a  href="admPago.php?accion=eliminar&id_pago={$elemento.id_pago}">
+                <img src="../img/cancel.png" >
+              </a>
+            </td>
+          </tr>
+          {/foreach}
+      </table>
+          <div class="alta">
+            <form >
+                <a class=button href="admPago.php?accion=nuevo">REGISTRAR PAGO</a>
+            </form>
+
+          </div>
+    </div>
+    {include file='componentes/footer.html'}
+</div>
+  {include file='componentes/js.html'}
+</body>
+</html>

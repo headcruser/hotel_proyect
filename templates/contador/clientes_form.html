@@ -1,0 +1,98 @@
+
+<!--ALTA DE CLIENTES/HOTEL DUMORT-->
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO CLIENTE</title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_cliente)}
+                  <h1>EDICION DE CLIENTE</h1>
+                  {else}
+                  <h1>NUEVO CLIENTE</h1>
+                {/if}
+                <br>
+            </div>
+
+
+
+            <div class="formulario">
+                <h1>Formulario cliente </h1>
+
+
+                <form class="form-horizontal" method="POST" action="admClientes.php?accion={if isset($id_cliente)}guardar{else}alta{/if}">
+
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> Nombre</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" id="inputName" placeholder="Escribe tu nombre" required  name="nombre" {if isset($id_cliente)} value="{$cliente.nombre}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> RFC</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" id="inputName" placeholder="Escribe tu RFC" required minlength="13" name="rfc" {if isset($id_cliente)} value="{$cliente.rfc}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> Direccion</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" name="direccion" id="inputName" placeholder="Escribe tu dirección" required {if isset($id_cliente)} value="{$cliente.direccion}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> Telefono</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="tel" name="telefono" id="inputName" placeholder="Escribe tu Telefono" required {if isset($id_cliente)} value="{$cliente.telefono}"{/if}/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> Email</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" name="email" id="inputName" placeholder="Escribe un correo Électronico" required {if isset($id_cliente)} value="{$cliente.email}"{/if}/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label"> Selecciona un usuario</label>
+                        <div class="col-sm-10">
+                          {$comboUsuario}
+                        </div>
+                    </div>
+
+                   {if isset($id_cliente)}
+                    <input type="hidden" name="id_cliente" value="{$id_cliente}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit"></p>
+                  </div>
+
+              </form>
+          </div>
+                 {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

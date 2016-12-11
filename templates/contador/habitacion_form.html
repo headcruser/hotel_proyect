@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO HABITACION </title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_habitacion )}
+                  <h1>EDICION DE HABITACION</h1>
+                  {else}
+                  <h1>NUEVA HABITACION</h1>
+                {/if}
+                <br>
+            </div>
+
+
+
+            <div class="formulario">
+                <h1>Formulario Habitacion </h1>
+
+
+                <form class="form-horizontal" method="POST" action="admHabitacion.php?accion={if isset($id_habitacion)}guardar{else}alta{/if}">
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Numero</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" placeholder="Asigna un número de habitación" required name="numero" {if isset($id_habitacion)} value="{$habitacion.numero}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Piso</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" name="piso" placeholder="Agrega número de piso" required {if isset($id_habitacion)} value="{$habitacion.piso}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Precio Diario</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" name="precioDiario"placeholder="Agrega el costo diario" required  {if isset($id_habitacion)} value="{$habitacion.precioDiario}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Selecciona estado</label>
+                        <div class="col-sm-10">
+                        {$comboEstado}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Selecciona Tipo de Habitacion</label>
+                        <div class="col-sm-10">
+                         {$comboHabitacion}
+                        </div>
+                    </div>
+
+                   {if isset($id_habitacion)}
+                    <input type="hidden" name="id_habitacion" value="{$id_habitacion}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit"></p>
+                  </div>
+
+              </form>
+           </div>
+            {include file='componentes/footer.html'}
+        </div>
+    {include file='componentes/js.html'}
+</body>
+</html>

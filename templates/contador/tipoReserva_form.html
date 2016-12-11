@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO TIPO RESERVA</title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_tipoHab)}
+                  <h1>EDICION DE TIPO DE RESERVA</h1>
+                  {else}
+                  <h1>NUEVA RESERVA</h1>
+                {/if}
+                <br>
+            </div>
+
+            <div class="formulario">
+                <h1>Formulario tipo habitacion </h1>
+
+
+                <form class="form-horizontal" method="POST" action="admTipoReserva.php?accion={if isset($id_tipoReserva)}guardar{else}alta{/if}">
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Descripcion </label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" placeholder="Agrega una descripcion" required name="descripcion" {if isset($id_tipoReserva)} value="{$id_tipoReserva.descripcion}"{/if}/>
+                        </div>
+                    </div>
+
+
+                   {if isset($id_tipoReserva)}
+                    <input type="hidden" name="id_tipoReserva" value="{$id_tipoReserva}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit" value="añadir"></p>
+                  </div>
+
+              </form>
+                 </div>
+
+                 {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

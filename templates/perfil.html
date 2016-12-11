@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Perfil</title>
+    <link rel="shortcut icon" href="../img/iconHotel.png">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="../css/main.css" >
+    <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css" >
+  </head>
+  <body>
+    <div id="wrapper">
+    {$header}
+
+
+    <!--CONTENEDOR PRINIPAL  -->
+    <div class="ibody">
+
+      <div class="jumbotron">
+          <h1 class="titulo"> Perfil de Usuario
+          </h1>
+
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+
+            {if isset($flag)}
+              {if $flag eq "false"}
+                <p> <img class="img-responsive img-thumbnail" src="mifoto.php" height="200" alt="200" > </p>
+                {else}
+                <p> <img class="img-responsive img-thumbnail" src="../img/avatar.png" height="200" alt="200" > </p>
+              {/if}
+              {else}
+                <p> <img class="img-responsive img-thumbnail" src="../img/avatar.png" height="200" alt="200" > </p>
+            {/if}
+        </div>
+      </div>
+
+
+      <form class="form-horizontal" action="perfil.php?accion=guardar" method="post" enctype="multipart/form-data">
+          <!-- DATOS -->
+          <div class="form-group">
+            <div class="col-sm-12">
+                <input class="form-control" type="text" name="nombres" placeholder="Escribe tu Nombre" required {if isset($usuario)} value="{$usuario.nombres}"{/if} >
+            </div>
+          </div>
+
+          <!-- APELLIDO -->
+          <div class="form-group">
+            <div class="col-sm-12">
+                <input class="form-control" type="text" name="apellidos" placeholder="Escribe tu apellido" required {if isset($usuario)} value="{$usuario.apellidos}"{/if}>
+            </div>
+          </div>
+
+          <!-- FECHA DE NACIMIENTO -->
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input class="form-control" type="date" name="nacimiento"  required {if isset($usuario)} value="{$usuario.nacimiento}"{/if}>
+            </div>
+          </div>
+
+
+          <!-- CONTRASENA -->
+            <div class="form-group">
+              <div class="col-sm-12">
+                  <input type="password" class="form-control" name="contrasena" placeholder="Contraseña"  minlength="3" required  >
+              </div>
+            </div>
+
+            <!-- SUBIR FOTO -->
+
+            <div class="form-group">
+              <label for="inputEmail3" class="control-label">Seleccionar Archivo</label>
+                <div class="col-sm-12">
+                  <input id="input-1" class="file" type="file" name="foto" value="">
+                </div>
+            </div>
+
+            {if isset($mensaje)}
+            <div class="media">
+              <div class="alert alert-danger" role="alert">
+              <strong> ERROR:</strong>
+              {$mensaje}
+              </div>
+            </div>
+            {/if}
+
+            <div class="form-group">
+                 <div class="enviar">
+                     <p> <input class="btn btn-primary btn-lg btn-block" type="submit" value="Enviar"></p>
+                </div>
+            </div>
+
+      </form>
+
+    </div>
+    {include file='componentes/footer.html'}
+
+</div>
+    <!-- CODIGO JAVASCRIPT -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

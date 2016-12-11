@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Restablecer contraseña</title>
+		<link rel="shortcut icon" href="../img/iconHotel.png">
+		<link rel="stylesheet" type="text/css" href="../css/login.css" >
+		<link rel="stylesheet" type="text/css" href="../css/flat.css" >
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="../css/main.css" >
+	</head>
+	<body>
+		<div class="container well" id="sha" >
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Restablecimiento de contraseña</h3>
+						</div>
+				 </div>
+
+				 <!-- formulario para las contraseñas  -->
+				 <form class="login" method="POST" action="forgot.php?accion=restablecer">
+
+						<div class="form-group">
+								<input type="text" class="form-control" name="contrasena" placeholder="Nueva Contraseña"  required autofocus >
+						</div>
+
+						<div class="form-grup">
+								<input type="password" class="form-control" name="contrasena2" placeholder="Confirme Contrasena">
+						</div>
+
+							{if isset ($clave) }
+							<input type="hidden" name="clave" value="{$clave}">
+							{/if}
+
+							{if isset ($id_usuario) }
+							<input type="hidden" name="id_usuario" value="{$id_usuario}">
+							{/if}
+
+						<!--BOTON DE ENVIAR  -->
+							<div class="form-grup">
+								<div class="enviar">
+									<p> <input class="btn btn-primary btn-lg active" type="submit"  value="Restablecer"></p>
+								</div>
+
+							</div>
+
+
+				 </form>
+
+
+				{if isset($pass)}
+					<div class="media">
+							<div class="alert alert-danger" role="alert">
+							<strong> ERROR:</strong>
+							{$pass}
+							</div>
+					</div>
+				{/if}
+		</div>
+
+	</body>
+</html>

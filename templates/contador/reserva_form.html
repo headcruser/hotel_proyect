@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+          {include file='componentes/estilos.html'}
+      <title>FORMULARIO RESERVA</title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_reserva)}
+                  <h1>EDICION DE RESERVA</h1>
+                  {else}
+                  <h1>NUEVA RESERVA</h1>
+                {/if}
+                <br>
+            </div>
+
+
+
+            <div class="formulario">
+                <h1>Formulario reserva </h1>
+
+
+                <form class="form-horizontal" method="POST" action="admReserva.php?accion={if isset($id_reserva)}guardar{else}alta{/if}">
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Fecha Reserva</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="date" required name="fechaReserva" {if isset($id_reserva)} value="{$reserva.fechaReserva}"{/if}/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Costo de alojamiento</label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" placeholder="Asigna un costo" required name="costoAlojamiento" {if isset($id_reserva)} value="{$reserva.costoAlojamiento}"{/if}/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Seleccione habitacion</label>
+                        <div class="col-sm-10">
+                         {$comboHabitacion}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Seleccione tipo Reserva</label>
+                        <div class="col-sm-10">
+
+                        {$comboReserva}
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> seleccione Empleado</label>
+                        <div class="col-sm-10">
+                         {$comboEmpleado}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Asignar a un cliente</label>
+                        <div class="col-sm-10">
+                         {$comboCliente}
+                        </div>
+                    </div>
+
+
+                     <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> seleccione Estado</label>
+                        <div class="col-sm-10">
+                         {$comboEstado}
+                        </div>
+                    </div>
+
+
+                   {if isset($id_reserva)}
+                    <input type="hidden" name="id_reserva" value="{$id_reserva}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit"></p>
+                  </div>
+
+              </form>
+                 </div>
+
+              {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

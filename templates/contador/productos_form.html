@@ -1,0 +1,74 @@
+<!--TEMPLATES/HOTEL DUMORT-->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/flat.css" >
+    <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+    {include file='componentes/estilos.html'}
+  <title>FORMULARIO PRODUCTO</title>
+</head>
+
+  <body>
+        <div id="wrapper">
+          {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($idProducto)}
+                  <h1>EDICION DE PRODUCTO</h1>
+                  {else}
+                  <h1>NUEVO PRODUCTO</h1>
+                {/if}
+                <br>
+            </div>
+
+            <div class="formulario">
+            <h1>Formulario Producto </h1>
+
+                <form  class="form-horizontal" method="POST" action="admProducto.php?accion={if isset($idProducto)}guardar{else}alta{/if}">
+
+                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> Nombre</label>
+                      <div class="col-sm-10">
+                       <input class="form-control" type="text" placeholder="Nombre del producto" required name="nombre" {if isset($idProducto)} value="{$producto.nombre}"{/if}/>
+                      </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> Descripcion</label>
+                      <div class="col-sm-10">
+                       <input class="form-control" type="textArea" placeholder="Agrega una descripcion" required name="descripcion" {if isset($idProducto)} value="{$producto.descripcion}"{/if}/>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> Unidad de medida</label>
+                      <div class="col-sm-10">
+                       <input class="form-control" type="text" name="unidadMedida"  placeholder="Unidad de medida" required {if isset($idProducto)} value="{$producto.unidadMedida}"{/if}/><br>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> Precio Venta</label>
+                      <div class="col-sm-10">
+                       <input class="form-control" type="text" name="precioVenta" placeholder="Precio de venta" required {if isset($idProducto)} value="{$producto.precioVenta}"{/if}/>
+                      </div>
+                  </div>
+
+                   {if isset($idProducto)}
+                    <input type="hidden" name="idProducto" value="{$idProducto}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit"></p>
+                  </div>
+
+            </form>
+                 </div>
+                 {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

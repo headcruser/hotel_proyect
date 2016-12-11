@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+      <meta charset="utf-8">
+      <!-- Pone un icono en la pestaña -->
+      <link rel="shortcut icon" href="../img/iconHotel.png">
+
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO ROL_PRIVILEGIO</title>
+    </head>
+  <body>
+
+      <!-- contenedor principal -->
+      <div id="wrapper">
+         {$header}
+
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_privilegio)}
+                  <h1>EDICION DE PRIVILEGIOS</h1>
+                  {else}
+                  <h1>NUEVO ROL-PRIVILEGIO</h1>
+                {/if}
+                <br>
+          </div>
+
+          <div class="formulario ">
+              <h1>FORMULARIO ROL-PRIVILEGIO </h1>
+
+                <form class="form-horizontal" method="POST" action="rol_privilegio.php?accion={if isset($id_privilegio)}guardar{else}alta{/if}">
+
+
+                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">SELECCION DE ROL</label>
+                      <div class="col-sm-10">
+                         {$combo_rol}
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">SELECCION DE PRIVILEGIO</label>
+                      <div class="col-sm-10">
+                         {$combo_privilegio}
+                      </div>
+                    </div>
+
+
+                    {if isset($id_privilegio) and isset($id_rol) }
+                     <input type="hidden" name="nee1" value="{$id_privilegio}">
+                     <input type="hidden" name="nee2" value="{$id_rol}">
+                   {/if}
+
+                    <div class="form-group">
+                      <div class="enviar">
+                              <p> <input class=button type="submit" value="Añadir"></p>
+                      </div>
+                    </div>
+                </form>
+            </div>
+
+
+            {include file='componentes/footer.html'}
+        </div>
+    {include file='componentes/js.html'}
+</body>
+</html>

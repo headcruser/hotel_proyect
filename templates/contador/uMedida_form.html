@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="../img/iconHotel.png"> <!-- Pone un icono en la pestaña -->
+      {include file='componentes/estilos.html'}
+      <title>FORMULARIO TIPO UNIDAD DE MEDIDA</title>
+  </head>
+
+  <body>
+        <div id="wrapper">
+            {$header}
+          <div id="Encabezado">
+             {*Se agrego un if para poner una etiqueta *}
+
+                {if isset($id_uMedida)}
+                  <h1>EDICION DE TIPO DE UNIDAD DE MEDIDA</h1>
+                  {else}
+                  <h1>NUEVA UNIDAD DE MEDIDA </h1>
+                {/if}
+                <br>
+          </div>
+
+            <div class="formulario">
+                <h1>Formulario tipo Unidad de medida</h1>
+
+                <form class="form-horizontal" method="POST" action="admuMedida.php?accion={if isset($id_uMedida)}guardar{else}alta{/if}">
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> Descripcion </label>
+                        <div class="col-sm-10">
+                         <input class="form-control" type="text" placeholder="Agrega una descripcion" required name="descripcion" {if isset($id_uMedida)} value="{$umedida.descripcion}"{/if}/>
+                        </div>
+                    </div>
+
+                   {if isset($id_uMedida)}
+                    <input type="hidden" name="id_uMedida" value="{$id_uMedida}">
+                  {/if}
+
+
+                  <div class="enviar">
+                    <p> <input class=button type="submit" value="añadir"></p>
+                  </div>
+
+              </form>
+            </div>
+          {include file='componentes/footer.html'}
+        </div>
+        {include file='componentes/js.html'}
+</body>
+</html>

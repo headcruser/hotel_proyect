@@ -1,0 +1,62 @@
+<!-- Vista de usuario-rol -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Pone un icono en la pestaña -->
+    <link rel="shortcut icon" href="../img/iconHotel.png">
+
+    {include file='componentes/estilos.html'}
+    <title>{$titulo}</title>
+  </head>
+<body>
+
+    <div id="wrapper">
+      {$header}
+
+      <div id="contenedor">
+      <h1>{$titulo}</h1>
+
+                <!--MUESTRA LA TABLA DE CLIENTESS -->
+              <table class="table-condensed"  CELLSPACING=1  >
+
+                <tr ALIGN=center>
+                  <th >USUARIO </th>
+                  <th>ROL</th>
+                  <th>VER</th>
+                  <th>EDITAR</th>
+                  <th>ELIMINAR</th>
+                </tr>
+
+                {foreach $usuario_rol as $elemento}
+                <tr ALIGN=center>
+                  <td>{$elemento.email}</td>
+                  <td> {$elemento.rol}</td>
+                  <td> <img src="../img/report.png" ></td>
+                  <td>
+                    <a href="usuario_rol.php?accion=editar&id_usuario={$elemento.id_usuario}&id_rol={$elemento.id_rol}">
+                      <img src="../img/lapiz.png" >
+                  </td>
+                    </a>
+                  <td>
+                       <a href="usuario_rol.php?accion=eliminar&id_usuario={$elemento.id_usuario}&id_rol={$elemento.id_rol}">
+                      <img src="../img/cancel.png" >
+                    </a>
+                  </td>
+                </tr>
+                {/foreach}
+            </table> <!-- fin de tabla -->
+
+                <div class="alta">
+                  <form >
+                      <a  class=button href="usuario_rol.php?accion=nuevo">Nueva asignación </a>
+                  </form>
+                </div>
+            </div>
+
+      {include file='componentes/footer.html'}
+    </div>
+
+    {include file='componentes/js.html'}
+</body>
+</html>
