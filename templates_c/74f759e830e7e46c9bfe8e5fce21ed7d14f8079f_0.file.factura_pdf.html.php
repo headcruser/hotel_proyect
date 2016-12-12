@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-08 04:55:38
+/* Smarty version 3.1.30, created on 2016-12-12 03:25:52
   from "C:\xampp\htdocs\hotel_proyect\templates\PDF\facturaClientes\factura_pdf.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5848d9ba126dc2_51901118',
+  'unifunc' => 'content_584e0ab0219f99_07146594',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '74f759e830e7e46c9bfe8e5fce21ed7d14f8079f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\PDF\\facturaClientes\\factura_pdf.html',
-      1 => 1481169309,
+      1 => 1481509548,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5848d9ba126dc2_51901118 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584e0ab0219f99_07146594 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
   <style type="text/css">
+    .titulo
+    {
+      text-align: center;
+    }
     .table
     {
       border-collapse: collapse;
@@ -36,7 +40,7 @@ function content_5848d9ba126dc2_51901118 (Smarty_Internal_Template $_smarty_tpl)
     }
 
     th
-    {  
+    {
       text-align: center;
       background-color: #4CAF50;
       color: white;
@@ -53,37 +57,31 @@ function content_5848d9ba126dc2_51901118 (Smarty_Internal_Template $_smarty_tpl)
   </style>
 
 <page backtop="5%" backbottom="5%" backleft="5%" backright="5%">
-      <h1>Factura Electrónica</h1>
+      <hr>
+      <h1 class="encabezado">Factura Electrónica</h1>
+      <hr>
 
+      <br>
+      <h1>Datos del Cliente</h1>
                 <!--MUESTRA LA TABLA DE CLIENTESS -->
               <table class="table"  CELLSPACING=1  >
 
                 <tr ALIGN=center>
-                  <th  >Nombre </th>
-                  <th > Apellido</th>
-                  <th > Nacimiento</th>
-                  <th > Direccion</th>
-                  <th > Costo Alojamiento</th>
-                  <th > Fecha Emision</th>
+                  <th  >Nombre cliente </th>
+                  <th > Empleado</th>
+                  <th > Tipo de Reservacion</th>
                 </tr>
-
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['detalle']->value, 'elemento');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['elemento']->value) {
 ?>
                 <tr ALIGN=center>
-                  <td><?php echo $_smarty_tpl->tpl_vars['elemento']->value['nombres'];?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['elemento']->value['nombre'];?>
 </td>
-                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['apellidos'];?>
+                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['empleado'];?>
 </td>
-                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['nacimiento'];?>
-</td>
-                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['direccion'];?>
-</td>
-                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['costoAlojamiento'];?>
-</td>
-                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['fechaEmision'];?>
+                  <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['descripcion'];?>
 </td>
                 </tr>
                 <?php
@@ -93,5 +91,51 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
             </table>
-</page><?php }
+       <br>
+       <br>
+       <hr>
+       <h2>Consumos Realizados por el cliente </h2>
+
+         <!--MUESTRA LA TABLA DE CLIENTESS -->
+       <table class="table"  CELLSPACING=1  >
+
+         <tr ALIGN=center>
+           <th  >No. Reserva </th>
+           <th > Producto</th>
+           <th > Cantidad</th>
+           <th > Precio de venta</th>
+           <th > Subtotal</th>
+
+         </tr>
+         <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['consumos']->value, 'elemento');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['elemento']->value) {
+?>
+         <tr ALIGN=center>
+           <td><?php echo $_smarty_tpl->tpl_vars['elemento']->value['id_reserva'];?>
+</td>
+           <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['producto'];?>
+</td>
+           <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['cantidad'];?>
+</td>
+           <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['precioVenta'];?>
+</td>
+           <td> <?php echo $_smarty_tpl->tpl_vars['elemento']->value['subTotal'];?>
+</td>
+         </tr>
+         <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+     </table>
+     <br>
+     <br>
+     <label><span> Total de los cosumos:</span> <?php echo $_smarty_tpl->tpl_vars['total']->value;?>
+</label>
+
+</page>
+<?php }
 }

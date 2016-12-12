@@ -23,20 +23,33 @@
 		 {
 		 	case 'imprimir':
 				//Muestra el contenido del archivo PDF
-				$id_cliente=$_GET['id_cliente'];
-
 				//Consultas
-				$detalle =$web-> fetchAll("select * from facturacion");
+				//obtengo los datos del cliente
+				$sql_cliente="select id_cliente from cliente where id_usuario =".$id_usuario;
+				$cliente=$web->fetchAll($sql_cliente);
+				$id_cliente=$cliente[0]['id_cliente'];
+
+				$detalle =$web-> fetchAll("select * from ListaReserva where id_cliente=$id_cliente");
+				$id_reserva=$detalle[0]['id_reserva'];
+
+				//obtengo los consumos
+				$sql_consumos="select * from ListaConsumos where id_reserva =".$id_reserva;
+				$consumos=$web->fetchAll($sql_consumos);
+
+				//Total
+				$arraytotal=$web->fetchAll("select sum(subTotal) as total from ListaConsumos");
+				$total=$arraytotal[0]['total'];
 
 				$templates->assign('detalle',$detalle);
-	      		$templates->assign('header',$header);
+				$templates->assign('consumos',$consumos);
+				$templates->assign('total',$total);
 				$reporte=$templates->fetch('PDF/facturaClientes/factura_pdf.html');
 
 				require_once(PATH.'/lib/html2pdf/vendor/autoload.php');
 				$html2pdf = new HTML2PDF('P', 'A4', 'fr','true','UTF-8');
 				$html2pdf->setDefaultFont('Arial');
 				$html2pdf->writeHTML($reporte, null);
-				$html2pdf->Output('cotizacion.pdf');
+				$html2pdf->Output('factura_cliente.pdf');
 				//echo $reporte;
 				 die();
 		 		break;
@@ -45,7 +58,7 @@
 		 		break;
 		 }
 
-		$detalle=$web->fetchAll("select * from cliente");
+		$detalle=$web->fetchAll("select * from cliente where id_usuario=$id_usuario");
 		$templates->assign('detalle',$detalle);
 		$templates->assign('header',$header);
 		$templates->display('facturacion.html');

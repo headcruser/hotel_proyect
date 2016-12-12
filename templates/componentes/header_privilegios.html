@@ -28,14 +28,31 @@
         <!-- Inicia el menu-->
         <div class="collapse navbar-collapse" id="menu-navegacion">
           <ul class="nav navbar-nav">
-            
+
+            {if isset($privilegio)}
+              {if $privilegio eq "empleado"}
+                <li ><a href="../index.php">Pagina Principal</a></li>
+              {/if}
+            {/if}
+
+            {if $privilegio eq "empleado"}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                  Servicios <span class="caret"></span>
+                </a>
+                  <!-- SubMenu -->
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="../empleado/reservacion.php">Realizar una Reservación</a></li>
+                      <li><a href="algo"> Algo mas</a></li>
+                  </ul>
+              </li>
+            {/if}
+
 
 
             {if isset($privilegio)}
               {if $privilegio eq "cliente"}
-                <li ><a href="../admin/index.php">Inicio</a></li>
-                {else}
-                <li class="active"><a href="../index.php">Inicio</a></li>    
+                <li ><a href="../admin/index.php">hola_cliente</a></li>
               {/if}
             {/if}
 
@@ -46,7 +63,8 @@
                 </a>
                   <!-- SubMenu -->
                   <ul class="dropdown-menu" role="menu">
-                      <li><a href="../cliente/facturacion.php">Facturación Electronica</a></li>
+                      <li><a href="../cliente/facturacion.php">Mi factura Electrónica</a></li>
+                      <li><a href="../cliente/consumo.php">Registrar consumo</a></li>
                   </ul>
               </li>
             {/if}
@@ -65,21 +83,20 @@
                       <li><a href="admEmpleado.php">Empleados</a></li>
                       <li><a href="admEstado.php">Estados del sistema</a></li>
 
-                      <li role="separator" class="divider"></li>
-                      <li><a href="admPago.php">Ver pagos</a></li>
-                      <li><a href="admProducto.php">Ver Productos</a></li>
-                      <li><a href="admReserva.php">Ver Reservas</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="admPago.php">Ver pagos</a></li>
+                  <li><a href="admProducto.php">Ver Productos</a></li>
+                  <li><a href="admReserva.php">Ver Reservas</a></li>
 
 
-                      <li role="separator" class="divider"></li>
-                      <li><a href="admtipoComprobante.php">Tipo comprobante</a></li>
-                      <li><a href="admTipoHabitacion.php">Tipo de habitacion</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="admtipoComprobante.php">Tipo comprobante</a></li>
+                  <li><a href="admTipoHabitacion.php">Tipo de habitacion</a></li>
 
-                      <li role="separator" class="divider"></li>
-                      <li><a href="admTipoReserva.php">Tipo de Reservacion</a></li>
-                      <li><a href="admuMedida.php">Unidad de medida</a></li>
-                      <li><a href="admHabitacion.php">Habitaciones</a></li>
-
+                  <li role="separator" class="divider"></li>
+                  <li><a href="admTipoReserva.php">Tipo de Reservacion</a></li>
+                  <li><a href="admuMedida.php">Unidad de medida</a></li>
+                  <li><a href="admHabitacion.php">Habitaciones</a></li>
 
                   <li role="separator" class="divider"></li>
                   <li><a href="reporte.php">Visualizar Reporte</a></li>
@@ -95,9 +112,10 @@
               {if $privilegio eq "contador" or $privilegio eq "administrador"}
               <li><a href="perfil.php"> <span class="glyphicon glyphicon-user"> Perfil</span></a></li>
                 {else}
-                    {if $privilegio eq "cliente"}
+                    {if $privilegio eq "cliente" or $privilegio eq "empleado"}
                     <li><a href="../admin/perfil.php"><span class="glyphicon glyphicon-user"> Perfil</span></a></li>
                     {/if}
+
               {/if}
             {/if}
             {if isset($privilegio)}
@@ -131,7 +149,7 @@
             {/if}
 
             {if isset($privilegio)}
-              {if $privilegio eq "cliente"}
+              {if $privilegio eq "cliente" or $privilegio eq "empleado" }
               <li><a href="../admin/login.php?accion=logout"><span class="glyphicon glyphicon-off"> Salir</span></a></li>
               {/if}
             {/if}

@@ -53,13 +53,14 @@ class rol_privilegio extends Chotel
 		**********************************************************************************/
 		function updateRolPrivilegio($Actualizacion,$id_rol,$id_privilegio)
 		{
-			if(is_numeric($id_rol) && is_numeric($id_privilegio)&&isset($Actualizacion))
+			if(is_numeric($id_rol)&& is_numeric($id_privilegio)&&isset($Actualizacion))
 			 {
 						$updateIDrol=$Actualizacion['id_rol'];
 				 		$updateIDprivilegio=$Actualizacion['id_privilegio'];
 
 						$sql = "UPDATE rol_privilegio SET id_rol=$updateIDrol,id_privilegio=$updateIDprivilegio
 														WHERE id_rol=$id_rol and id_privilegio=$id_privilegio";
+
 						$statement=$this->conDB->Prepare($sql);
 						$statement->Execute();
 		    }

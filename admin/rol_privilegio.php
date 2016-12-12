@@ -4,7 +4,6 @@
 	include('../controllers/rol_privilegio.php');
 
 	$web=new rol_privilegio; //Crea un objeto
-
 	//Elementos que inician vacios
 	$accion=null;
 	$id_rol=null;
@@ -22,7 +21,7 @@
 		$header=$web->Privilegiosheader($privilegio);
 
 	 }
-	 
+
 		//Obtiene la accion seleccionada por el usuario
 		if( isset($_GET['accion']))
 		{
@@ -85,17 +84,15 @@
 
 			// Actualiza
 			case 'guardar':
-			
-				if(isset($_POST))
-						{
-							$id_rolAux=$_POST['nee1'];
-							$id_privilegioAux=$_POST['nee2'];
-							unset($_POST['nee1']);
-							unset($_POST['nee2']);
+			if(isset($_POST))
+				{
 
-							$web->setTabla("rol_privilegio");
-							$web->updateRolPrivilegio($_POST,$id_rolAux,$id_privilegioAux);
-						}
+					$id_rolAux=$_POST['nee1'];
+					$id_privilegioAux=$_POST['nee2'];
+					 unset($_POST['nee1']);
+					 unset($_POST['nee2']);
+					$web->updateRolPrivilegio($_POST,$id_rolAux,$id_privilegioAux);
+				}
 
 				break;
 
@@ -119,5 +116,5 @@
 		$templates->assign('rol',$rol);
 		$templates->assign('header',$header);
 		$templates->display('admin/rol_privilegio.html');
-	 
+
  ?>

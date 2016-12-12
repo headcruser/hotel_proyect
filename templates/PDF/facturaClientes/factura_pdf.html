@@ -1,5 +1,9 @@
 
   <style type="text/css">
+    .titulo
+    {
+      text-align: center;
+    }
     .table
     {
       border-collapse: collapse;
@@ -12,7 +16,7 @@
     }
 
     th
-    {  
+    {
       text-align: center;
       background-color: #4CAF50;
       color: white;
@@ -29,29 +33,56 @@
   </style>
 
 <page backtop="5%" backbottom="5%" backleft="5%" backright="5%">
-      <h1>Factura Electrónica</h1>
+      <hr>
+      <h1 class="encabezado">Factura Electrónica</h1>
+      <hr>
 
+      <br>
+      <h1>Datos del Cliente</h1>
                 <!--MUESTRA LA TABLA DE CLIENTESS -->
               <table class="table"  CELLSPACING=1  >
 
                 <tr ALIGN=center>
-                  <th  >Nombre </th>
-                  <th > Apellido</th>
-                  <th > Nacimiento</th>
-                  <th > Direccion</th>
-                  <th > Costo Alojamiento</th>
-                  <th > Fecha Emision</th>
+                  <th  >Nombre cliente </th>
+                  <th > Empleado</th>
+                  <th > Tipo de Reservacion</th>
                 </tr>
-
                 {foreach $detalle as $elemento}
                 <tr ALIGN=center>
-                  <td>{$elemento.nombres}</td>
-                  <td> {$elemento.apellidos}</td>
-                  <td> {$elemento.nacimiento}</td>
-                  <td> {$elemento.direccion}</td>
-                  <td> {$elemento.costoAlojamiento}</td>
-                  <td> {$elemento.fechaEmision}</td>
+                  <td>{$elemento.nombre}</td>
+                  <td> {$elemento.empleado}</td>
+                  <td> {$elemento.descripcion}</td>
                 </tr>
                 {/foreach}
             </table>
+       <br>
+       <br>
+       <hr>
+       <h2>Consumos Realizados por el cliente </h2>
+
+         <!--MUESTRA LA TABLA DE CLIENTESS -->
+       <table class="table"  CELLSPACING=1  >
+
+         <tr ALIGN=center>
+           <th  >No. Reserva </th>
+           <th > Producto</th>
+           <th > Cantidad</th>
+           <th > Precio de venta</th>
+           <th > Subtotal</th>
+
+         </tr>
+         {foreach $consumos as $elemento}
+         <tr ALIGN=center>
+           <td>{$elemento.id_reserva}</td>
+           <td> {$elemento.producto}</td>
+           <td> {$elemento.cantidad}</td>
+           <td> {$elemento.precioVenta}</td>
+           <td> {$elemento.subTotal}</td>
+         </tr>
+         {/foreach}
+     </table>
+     <br>
+     <br>
+     <label><span> Total de los cosumos:</span> {$total}</label>
+
 </page>

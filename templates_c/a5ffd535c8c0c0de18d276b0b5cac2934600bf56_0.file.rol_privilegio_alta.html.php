@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-11 02:25:36
+/* Smarty version 3.1.30, created on 2016-12-11 17:10:48
   from "C:\xampp\htdocs\hotel_proyect\templates\admin\rol_privilegio_alta.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_584cab1041e6f6_89136168',
+  'unifunc' => 'content_584d7a882df1d9_60221254',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a5ffd535c8c0c0de18d276b0b5cac2934600bf56' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\admin\\rol_privilegio_alta.html',
-      1 => 1481419502,
+      1 => 1481472605,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:componentes/js.html' => 1,
   ),
 ),false)) {
-function content_584cab1041e6f6_89136168 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584d7a882df1d9_60221254 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,10 +81,11 @@ function content_584cab1041e6f6_89136168 (Smarty_Internal_Template $_smarty_tpl)
 
 
                     <?php if (isset($_smarty_tpl->tpl_vars['id_privilegio']->value) && isset($_smarty_tpl->tpl_vars['id_rol']->value)) {?>
-                     <input type="hidden" name="nee1" value="<?php echo $_smarty_tpl->tpl_vars['id_privilegio']->value;?>
+                    <input type="hidden" name="nee1" value="<?php echo $_smarty_tpl->tpl_vars['id_rol']->value;?>
 ">
-                     <input type="hidden" name="nee2" value="<?php echo $_smarty_tpl->tpl_vars['id_rol']->value;?>
+                    <input type="hidden" name="nee2" value="<?php echo $_smarty_tpl->tpl_vars['id_privilegio']->value;?>
 ">
+
                    <?php }?>
 
                     <div class="form-group">

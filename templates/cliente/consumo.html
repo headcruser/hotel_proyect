@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+	<html>
+	  <head>
+	    <meta charset="utf-8">
+	    <!-- Pone un icono en la pestaña -->
+	    <link rel="shortcut icon" href="../image/iconHotel.png">
+
+	    <!--hoja de estilos -->
+	    <link rel="stylesheet" type="text/css" href="../css/main.css" >
+	    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
+
+	    <title>{$titulo}</title>
+	  </head>
+	<body>
+
+	    <div id="wrapper">
+	      {$header}
+
+	      <h1 class="titulo">{$titulo}</h1>
+
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Querido y amado cliente, usted puede cargar sus consumos
+					</div>
+					{if isset($mensaje)}
+					<h3 >{$mensaje}</h3>
+					{/if}
+
+					<div >
+							<!-- Formulario -->
+							<form  class="form-horizontal"action="../cliente/consumo.php?accion=nuevo" method="POST">
+
+								<!-- sELECCION DE SERVICIOS -->
+								<div class="form-group">
+									<label class="col-sm-6 control-label" for="formGroup">Selecciona un Producto</label>
+										<div class="col-sm-4">
+													{$combo_productos}
+										</div>
+								</div>
+
+								<!-- CANTIDAD -->
+								<div class="form-group">
+										<label class="col-sm-6 control-label" for="formGroup">Cantidad de productos</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control"  id="cantidad" name="cantidad"  placeholder="Ingresa la cantidad " required>
+									</div>
+								</div>
+
+                <!-- PRECIO DE VENTA -->
+								<div class="form-group">
+										<label class="col-sm-6 control-label" for="formGroup">Precio de venta</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control"  id="cantidad" name="precioVenta" placeholder="Ingresa el precio" required>
+									</div>
+								</div>
+
+								<!-- BOTON ENVIAR -->
+								<div class="form-group">
+									<div class="col-sm-12">
+										<p> <input class="btn btn-primary btn-lg active" type="submit" value="Agregar"></p>
+									</div>
+
+								</div>
+
+
+							</form>	<!--  FIN DEL FORMULARIO-->
+
+							<!--SELECCIONAR  -->
+			 				<form  class="form-horizontal"action="consumo.php?accion=terminar" method="POST">
+
+			 					<!-- sELECCION DE SERVICIOS -->
+			 					<div class="form-group">
+			 						<label class="col-sm-6 control-label" for="formGroup">Lista de consumos</label>			 							
+			 					</div>
+
+
+								<div class="form-group">
+
+								{if isset($consumo)}
+									<div class="col-sm-12">
+										<!-- TABLA DE INFORMACION DE LA COTIZACION -->
+									<table class="table-condensed" >
+											<tr>
+												<th>Producto</th>
+												<th>Cantidad</th>
+                        <th>PrecioVenta</th>
+												<th>Eliminar</th>
+											</tr>
+											{foreach $consumo as $element}
+											<tr>
+												<td>{$element.producto}</td>
+												<td>{$element.cantidad}</td>
+                        <td>{$element.precioVenta}</td>
+												<td><a href="consumo.php?id_consumo={$element.id_servicio}&accion=eliminar"><img src="../img/cancel.png"></a> </td>
+											</tr>
+											{/foreach}
+
+									</table>
+									{else}
+											<h1>No has Seleccionado nada </h1>
+									{/if}
+
+									</div>
+								</div>  <!--FIN DEL FROM-GROUP-->
+
+			 					<!-- BOTON ENVIAR -->
+			 					<div class="form-group">
+			 						<div class="col-sm-12">
+			 							<p> <input class="btn btn-primary btn-lg active" type="submit" value="Terminar Cotizacion"></p>
+			 						</div>
+
+			 					</div>
+			 				</form>
+
+					</div>	<!--FIN DEL CONTAINER -->
+
+			 </div>
+
+	      	{include file='../componentes/footer.html'}
+	    </div>
+
+	    <!-- CODIGO JAVASCRIPT -->
+	    <script src="../js/jquery.js"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js"></script>
+	</body>
+	</html>

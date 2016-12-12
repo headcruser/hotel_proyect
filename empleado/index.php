@@ -1,6 +1,6 @@
 <?php
-  include('../hotel_class.php');
-  $web=new Chotel;
+  include('../cp_web_class.php');
+  $web=new Cpweb;
   $templates = $web->template();
   $templates->setTemplateDir("../templates/cliente");
 
@@ -17,7 +17,7 @@
     $email = $_SESSION['email'];
   }
   // print_r($_SESSION);
-  $templates->assign('titulo', 'Cliente');
+  $templates->assign('titulo', 'Login');
   $templates->assign('header', $header);
   $templates->assign('email', $email);
   $templates->display('index.html');
