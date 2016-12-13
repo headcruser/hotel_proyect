@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-07 07:41:01
+/* Smarty version 3.1.30, created on 2016-12-13 10:38:45
   from "C:\xampp\htdocs\hotel_proyect\templates\index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5847aefdaf7796_06593473',
+  'unifunc' => 'content_584fc1a52dd2d7_12536897',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ade06ea8ec70e9b4d86777060eadedece7e0c163' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\index.html',
-      1 => 1481092858,
+      1 => 1481621920,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:componentes/js.html' => 1,
   ),
 ),false)) {
-function content_5847aefdaf7796_06593473 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584fc1a52dd2d7_12536897 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ function content_5847aefdaf7796_06593473 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="col-md-4"></div>
                       <div class="col-md-4">
                         <?php if (isset($_smarty_tpl->tpl_vars['flag']->value)) {?>
-                          <?php if ($_smarty_tpl->tpl_vars['flag']->value == "false") {?>
+                          <?php if ($_smarty_tpl->tpl_vars['flag']->value == "true") {?>
                             <p> <img class="img-responsive img-thumbnail" src="mifoto.php" height="5" alt="5" > </p>
                             <?php } else { ?>
                             <p> <img class="img-responsive img-thumbnail" src="../img/avatar.png" height="5" alt="5" > </p>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-05 18:25:52
+/* Smarty version 3.1.30, created on 2016-12-13 06:46:39
   from "C:\xampp\htdocs\hotel_proyect\templates\publico\portafolio.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5845a320ec7d63_37223275',
+  'unifunc' => 'content_584f8b3f7de910_73280982',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '239466bcd17b59365b87e1e8ca002977143c0fcd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\publico\\portafolio.html',
-      1 => 1480958748,
+      1 => 1481607996,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:publico/js.html' => 1,
   ),
 ),false)) {
-function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584f8b3f7de910_73280982 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,6 +73,8 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                     <h3 class="section-subheading text-muted">El hotel cuenta con .</h3>
                 </div>
             </div>
+
+						<!-- SERVICIO A LA HABITACION -->
             <div class="row">
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
@@ -81,13 +83,14 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/roundicons.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/limpieza.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>Servicio a la habitación </h4>
                         <p class="text-muted">Habitaciónes</p>
                     </div>
                 </div>
+								<!-- MERCADOTECNIA (PRODUCTOS)-->
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -95,13 +98,15 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/startup-framework.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/producto.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4> Productos Hotel</h4>
                         <p class="text-muted">Mercadotecnia</p>
                     </div>
                 </div>
+
+								<!-- OFERTAS -->
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -109,13 +114,15 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/treehouse.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/ofertas.png" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>Ofertas del mes</h4>
                         <p class="text-muted">Descuentos hasta el 20%</p>
                     </div>
                 </div>
+
+								<!-- Reservaciones -->
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -123,13 +130,15 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/golden.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/reserva.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Portafolio</h4>
-                        <p class="text-muted">Diseño web</p>
+                        <h4>Reservaciones</h4>
+                        <p class="text-muted">Realiza una reservación</p>
                     </div>
                 </div>
+
+								<!-- Desayuno -->
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -137,13 +146,15 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/escape.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/desayuno.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Escape</h4>
-                        <p class="text-muted">Diseño web</p>
+                        <h4>Desayuno</h4>
+                        <p class="text-muted">Disfrute de un desayuno</p>
                     </div>
                 </div>
+
+								<!--alberca  -->
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -151,11 +162,11 @@ function content_5845a320ec7d63_37223275 (Smarty_Internal_Template $_smarty_tpl)
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portafolio/dreams.png" class="img-responsive" alt="">
+                        <img src="img/portafolio/alberca_hotel.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Sueños</h4>
-                        <p class="text-muted">Diseño web</p>
+                        <h4>Alberca</h4>
+                        <p class="text-muted">Descanse comodamente</p>
                     </div>
                 </div>
             </div>

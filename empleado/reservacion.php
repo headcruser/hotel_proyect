@@ -9,12 +9,11 @@
 	$templates=$web->template();
 
 	// Validacion para saber que tipo de header construir
-	 if(isset($_SESSION)){
-	 	$privilegio=$_SESSION['roles'][0]['rol'];
-	 }
+	$privilegio=$web->obtenerRolSesion();
 
-	$web->checarAcceso($privilegio); // policia
-	$header=$web->Privilegiosheader($privilegio); //Crea el header
+	//Login es el usuario predeterminado
+	$web->checarAcceso($privilegio);
+	$header=$web->Privilegiosheader($privilegio);
 
 	//Obtiene la accion seleccionada por el usuario
 	if( isset($_GET['accion'])){
@@ -28,122 +27,140 @@
 		if( isset($_POST))
 		{
 			//Valida si es un numero
-			if(is_numeric($_POST['cantidad']))
+			if(is_numeric($_POST['costoAlojamiento']))
 			{
 
-				$id_servicio=$_POST['id_servicio'];
-				$cantidad=$_POST['cantidad'];
-				$flag_cotizacion=true;
+				$id_cliente=$_POST['id_cliente'];
+				$id_tipoReserva=$_POST['id_tipoReserva'];
+				$id_estado=$_POST['id_estado'];
+				$id_habitacion=$_POST['id_habitacion'];
+				$fechaReserva=$_POST['fechaReserva'];
+				$costoAlojamiento=$_POST['costoAlojamiento'];
+				$flag_reservacion=true;
 				$posArray=0;
-				$sql="select servicio from servicio where id_servicio=".$id_servicio;
-				$servicio=$web->fetchAll($sql);
+
+				$sql_detalle="select c.nombre as cliente,tp.descripcion as tipoReserva,e.descripcion as estado,h.numero
+				 							from reserva r inner join cliente c on r.id_cliente=c.id_cliente
+											inner join tipoReserva tp on r.id_tipoReserva=tp.id_tipoReserva
+											inner join estado e on r.id_estado=e.id_estado
+											inner join habitacion h on r.id_habitacion=h.id_habitacion
+											where r.id_cliente=$id_cliente";
+				$detalle_Reserva=$web->fetchAll($sql_detalle);
+				$empleado=$web->fetchAll("select id_empleado from empleado where id_usuario=".$_SESSION['id_usuario']);
+				$id_empleado=$empleado[0]['id_empleado'];
+
 
 				//Existe el campo cotizacion
-				if(isset($_SESSION['cotizacion']))
+				if(isset($_SESSION['reservaciones']))
 				{
 					// Obtengo cotizaciones
-					$cotizaciones=$_SESSION['cotizacion'];
+					$reservaciones=$_SESSION['reservaciones'];
 
-					for ($i=0; $i < sizeof($cotizaciones); $i++)
+					for ($i=0; $i < sizeof($reservaciones); $i++)
 						{
-							if($cotizaciones[$i]['id_servicio']==$id_servicio)
-							{
-								$cotizaciones[$i]['cantidad']=$cotizaciones[$i]['cantidad']+$cantidad;
-								$flag_cotizacion=false;
-							}
 							$posArray++;  //leo el siguiente rgistro
 						}
-					if($flag_cotizacion==true)
-					{
-						$cotizaciones[$posArray]['id_servicio']=$id_servicio;
-						$cotizaciones[$posArray]['cantidad']=$cantidad;
-						$cotizaciones[$posArray]['servicio']=$servicio[0]["servicio"];
-					}
+
+						$reservaciones[$posArray]['fechaReserva']=$fechaReserva;
+						$reservaciones[$posArray]['costoAlojamiento']=$costoAlojamiento;
+						$reservaciones[$posArray]['id_habitacion']=$id_habitacion;
+						$reservaciones[$posArray]['id_tipoReserva']=$id_tipoReserva;
+						$reservaciones[$posArray]['id_empleado']=$id_empleado;
+						$reservaciones[$posArray]['id_cliente']=$id_cliente;
+						$reservaciones[$posArray]['id_estado']=$id_estado;
+						$reservaciones[$posArray]['cliente']=$detalle_Reserva[0]['cliente'];
+						$reservaciones[$posArray]['tipoReserva']=$detalle_Reserva[0]['tipoReserva'];
+						$reservaciones[$posArray]['estado']=$detalle_Reserva[0]['estado'];
+						$reservaciones[$posArray]['numero']=$detalle_Reserva[0]['numero'];
 				}
 				else
 				{
+
 					// Si no, Asigna la cotizacion
-					$cotizaciones[0]['id_servicio']=$id_servicio;
-					$cotizaciones[0]['cantidad']=$cantidad;
-					$cotizaciones[0]['servicio']=$servicio[0]['servicio'];
+					$reservaciones[0]['fechaReserva']=$fechaReserva;
+					$reservaciones[0]['costoAlojamiento']=$costoAlojamiento;
+					$reservaciones[0]['id_habitacion']=$id_cliente;
+					$reservaciones[0]['id_tipoReserva']=$id_cliente;
+					$reservaciones[0]['id_empleado']=$id_empleado;
+					$reservaciones[0]['id_cliente']=$id_cliente;
+					$reservaciones[0]['id_estado']=$id_estado;
+					$reservaciones[0]['cliente']=$detalle_Reserva[0]['cliente'];
+					$reservaciones[0]['tipoReserva']=$detalle_Reserva[0]['tipoReserva'];
+					$reservaciones[0]['estado']=$detalle_Reserva[0]['estado'];
+					$reservaciones[0]['numero']=$detalle_Reserva[0]['numero'];
+
 				}
 				//Asigno a la superGlobal session
-				$_SESSION['cotizacion']=$cotizaciones;
-				header("Location: cotizacion.php");
+				$_SESSION['reservaciones']=$reservaciones;
 
+				header("Location: reservacion.php");
 			}
-			$templates->assign('mensaje',"Realiza una cotizacion");
+			$templates->assign('mensaje',"Realiza una reservación");
 
 		}
 
 			break;
 
 			case'terminar':
-			if (isset($_SESSION['cotizacion']))
+			if (isset($_SESSION['reservaciones']))
 			{
-					$cotizaciones=$_SESSION['cotizacion'];
+					$reservaciones=$_SESSION['reservaciones'];
 
-					if(isset($_POST))
-					{
-						//Validar el cliente y su cotizacion
-						$id_cliente=$_POST['id_cliente'];
-						$fecha= date('Y-m-j');
-
-						//Primero inserta la cotizacion
-						$web->conn->beginTransaction();
-						$sql="insert into cotizacion (id_cliente,fecha) values ($id_cliente,'$fecha')";
-						$web->conn->exec($sql);
-
-
-						//Obtiene el ultimo id insertado
-						$sql="select id_cotizacion from cotizacion where id_cliente=$id_cliente order by id_cotizacion desc";
-						$datos=$web->getAll($sql);
-						$id_cotizacion=$datos[0]["id_cotizacion"];
-
-
-						for ($i=0; $i <sizeof($cotizaciones) ; $i++)
+						for ($i=0; $i <sizeof($reservaciones) ; $i++)
 						{
-							$id_servicio=$cotizaciones[$i]["id_servicio"];
-							$cantidad=$cotizaciones[$i]["cantidad"];
-							$sql="insert into cotizacion_detalle values($id_cotizacion,$id_servicio,$cantidad)";
-							$web->conn->exec($sql);
+							$fechaReserva=$reservaciones[$i]['fechaReserva'];
+							$costoAlojamiento=$reservaciones[$i]['costoAlojamiento'];
+							$id_habitacion=$reservaciones[$i]['id_habitacion'];
+							$id_tipoReserva=$reservaciones[$i]['id_tipoReserva'];
+							$id_empleado=$reservaciones[$i]['id_empleado'];
+							$id_cliente=$reservaciones[$i]['id_cliente'];
+							$id_estado=$reservaciones[$i]['id_estado'];
+
+							$sql="insert into reserva (fechaReserva,costoAlojamiento,id_habitacion,id_tipoReserva,id_empleado,id_cliente,id_estado)
+							values($fechaReserva,$costoAlojamiento,$id_habitacion,$id_tipoReserva,$id_empleado,$id_cliente,$id_estado)";
+							$web->conDB->exec($sql);
 						}
 
-						$web->conn->commit();
-						die("termine");
+						unset($_SESSION['reservaciones']);
 
-						unset($_SESSION['cotizacion']);
-
-						//Crear pagina de inicio los clientes
-
-					}
 			}
 			break;
 
 		default:
 
-			$combo_servicios=$web->showList("select id_servicio, servicio from servicio");
-			$templates->assign('combo_servicios',$combo_servicios);
-			$sql="select id_cliente, razon_social from cliente where id_usuario=".$_SESSION["id_usuario"];
+
+			//clientes
+			$combo_clientes=$web->showList("select id_cliente, nombre from cliente");
+			$templates->assign('combo_clientes',$combo_clientes);
+
+			//tipoReserva
+			$combo_tipoReserva=$web->showList("select id_tipoReserva, descripcion from tipoReserva");
+			$templates->assign('combo_tipoReserva',$combo_tipoReserva);
+
+			//estado
+			$combo_estado=$web->showList("select id_estado, descripcion from estado");
+			$templates->assign('combo_estado',$combo_estado);
+
+			//habitacion
+			$combo_habitacion=$web->showList("select id_habitacion, numero from habitacion");
+			$templates->assign('combo_habitacion',$combo_habitacion);
 
 
-			$combo_clientes=$web->showList($sql);
 
-
-			if (isset($_SESSION['cotizacion']))
+			if (isset($_SESSION['reservaciones']))
 			{
-				$cotizaciones=$_SESSION['cotizacion'];
-				$templates->assign('cotizacion',$cotizaciones);
+				$reservaciones=$_SESSION['reservaciones'];
+				$templates->assign('reservaciones',$reservaciones);
 			}
 			else{
-					$templates->assign('mensaje',"Realiza una cotizacion");
-					$templates->assign('cotizacion',array());
+					$templates->assign('mensaje',"Realiza una Reservacion");
+					$templates->assign('reservacion',array());
 			}
 
-			$templates->assign('combo_cliente',$combo_clientes);
-			$templates->assign('titulo','Generar Nueva Cotizacion');
+			// $templates->assign('combo_cliente',$combo_clientes);
+			$templates->assign('titulo','Generar Reservacion');
 			$templates->assign('header',$header);
-			$templates->display('cotizacion.html');
+			$templates->display('empleado/reservacion.html');
 			break;
 	}
  ?>

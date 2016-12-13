@@ -6,8 +6,8 @@
 	 if(isset($_SESSION))
    {
      //Obtiene los privilegios de la sesion
-     $privilegio=$web->obtenerRolSesion();
-     $web->checarAcceso($privilegio); // policia
+    //  $privilegio=$web->obtenerRolSesion();
+    //  $web->checarAcceso($privilegio); // policia
 
     $SQL="select foto from usuario where id_usuario=".$_SESSION["id_usuario"];
     $statement=$web->conDB->Prepare($SQL);

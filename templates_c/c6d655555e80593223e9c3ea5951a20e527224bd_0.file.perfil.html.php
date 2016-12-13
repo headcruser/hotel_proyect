@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-09 07:34:55
+/* Smarty version 3.1.30, created on 2016-12-13 10:37:25
   from "C:\xampp\htdocs\hotel_proyect\templates\perfil.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_584a508fcf9841_38705862',
+  'unifunc' => 'content_584fc1557a0678_44331751',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c6d655555e80593223e9c3ea5951a20e527224bd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\perfil.html',
-      1 => 1481265144,
+      1 => 1481621834,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:componentes/footer.html' => 1,
   ),
 ),false)) {
-function content_584a508fcf9841_38705862 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584fc1557a0678_44331751 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +52,7 @@ function content_584a508fcf9841_38705862 (Smarty_Internal_Template $_smarty_tpl)
         <div class="col-md-4">
 
             <?php if (isset($_smarty_tpl->tpl_vars['flag']->value)) {?>
-              <?php if ($_smarty_tpl->tpl_vars['flag']->value == "false") {?>
+              <?php if ($_smarty_tpl->tpl_vars['flag']->value == "true") {?>
                 <p> <img class="img-responsive img-thumbnail" src="mifoto.php" height="200" alt="200" > </p>
                 <?php } else { ?>
                 <p> <img class="img-responsive img-thumbnail" src="../img/avatar.png" height="200" alt="200" > </p>
@@ -93,7 +93,7 @@ function content_584a508fcf9841_38705862 (Smarty_Internal_Template $_smarty_tpl)
           <!-- CONTRASENA -->
             <div class="form-group">
               <div class="col-sm-12">
-                  <input type="password" class="form-control" name="contrasena" placeholder="Contraseña"  minlength="3" required  >
+                  <input type="password" class="form-control" name="contrasena" placeholder="Contraseña"  minlength="3"  >
               </div>
             </div>
 

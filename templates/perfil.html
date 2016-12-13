@@ -26,7 +26,7 @@
         <div class="col-md-4">
 
             {if isset($flag)}
-              {if $flag eq "false"}
+              {if $flag eq "true"}
                 <p> <img class="img-responsive img-thumbnail" src="mifoto.php" height="200" alt="200" > </p>
                 {else}
                 <p> <img class="img-responsive img-thumbnail" src="../img/avatar.png" height="200" alt="200" > </p>
@@ -64,7 +64,7 @@
           <!-- CONTRASENA -->
             <div class="form-group">
               <div class="col-sm-12">
-                  <input type="password" class="form-control" name="contrasena" placeholder="Contraseña"  minlength="3" required  >
+                  <input type="password" class="form-control" name="contrasena" placeholder="Contraseña"  minlength="3"  >
               </div>
             </div>
 

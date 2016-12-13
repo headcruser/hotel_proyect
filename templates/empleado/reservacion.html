@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+	<html>
+	  <head>
+	    <meta charset="utf-8">
+	    <!-- Pone un icono en la pestaña -->
+	    <link rel="shortcut icon" href="../image/iconHotel.png">
+
+	    <!--hoja de estilos -->
+	    <link rel="stylesheet" type="text/css" href="../css/main.css" >
+	    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
+
+	    <title>{$titulo}</title>
+	  </head>
+	<body>
+
+	    <div id="wrapper">
+	      {$header}
+
+	      <h1 class="titulo">{$titulo}</h1>
+
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Realiza una Reservacion para un Querido y Amado Cliente
+					</div>
+					{if isset($mensaje)}
+					<h3 >{$mensaje}</h3>
+					{/if}
+
+					<div >
+							<!-- Formulario -->
+							<form  class="form-horizontal"action="../empleado/reservacion.php?accion=nuevo" method="POST">
+
+								<!-- SELECCION DE CLIENTE -->
+								<div class="form-group">
+									<label class="col-sm-6 control-label" for="formGroup">Selecciona un Cliente</label>
+										<div class="col-sm-1">
+													{$combo_clientes}
+										</div>
+								</div>
+
+								<!-- SELECCION DE CLIENTE -->
+								<div class="form-group">
+									<label class="col-sm-6 control-label" for="formGroup">Selecciona tipo Reserva</label>
+										<div class="col-sm-1">
+													{$combo_tipoReserva}
+										</div>
+								</div>
+
+								<!-- SELECCION DE ESTADO DE Reservacion -->
+								<div class="form-group">
+									<label class="col-sm-6 control-label" for="formGroup">Estado de la reserva</label>
+										<div class="col-sm-1">
+													{$combo_estado}
+										</div>
+								</div>
+
+								<!-- seleccion de habitacion -->
+								<div class="form-group">
+									<label class="col-sm-6 control-label" for="formGroup">Numero de habitación</label>
+										<div class="col-sm-1">
+													{$combo_habitacion}
+										</div>
+								</div>
+
+
+								<!-- CANTIDAD -->
+								<div class="form-group">
+										<label class="col-sm-6 control-label" for="formGroup">Fecha de Reserva</label>
+									<div class="col-sm-4">
+										<input type="date" class="form-control" name="fechaReserva"  required>
+									</div>
+								</div>
+
+                <!-- PRECIO DE VENTA -->
+								<div class="form-group">
+										<label class="col-sm-6 control-label" for="formGroup">Costo de alojamiento</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control" name="costoAlojamiento" placeholder="Ingresa el precio" required>
+									</div>
+								</div>
+
+								<!-- BOTON ENVIAR -->
+								<div class="form-group">
+									<div class="col-sm-12">
+										<p> <input class="btn btn-primary btn-lg active" type="submit" value="Agregar"></p>
+									</div>
+
+								</div>
+
+
+							</form>	<!--  FIN DEL FORMULARIO-->
+
+							<!--SELECCIONAR  -->
+			 				<form  class="form-horizontal"action="reservacion.php?accion=terminar" method="POST">
+
+			 					<!-- sELECCION DE SERVICIOS -->
+			 					<div class="form-group">
+			 						<label class="col-sm-6 control-label" for="formGroup">Lista de reservaciones</label>
+			 					</div>
+
+
+								<div class="form-group">
+
+								{if isset($reservaciones)}
+									<div class="col-sm-12">
+										<!-- TABLA DE INFORMACION DE LA COTIZACION -->
+									<table class="table-condensed" >
+											<tr>
+												<th>Cliente </th>
+												<th>Fecha de Reserva </th>
+												<th>Costo Alojamiento</th>
+                        <th>Tipo de Reserva</th>
+												<th>numero de Habitacion</th>
+												<th>estado</th>
+												<th>Eliminar</th>
+											</tr>
+											{foreach $reservaciones as $element}
+											<tr>
+												<td>{$element.cliente}</td>
+												<td>{$element.fechaReserva}</td>
+												<td>{$element.costoAlojamiento}</td>
+												<td>{$element.tipoReserva}</td>
+												<td>{$element.numero}</td>
+                        <td>{$element.estado}</td>
+												<td><a href="reservaciones.php?id_reservacion={$element.id_tipoReserva}&accion=eliminar"><img src="../img/cancel.png"></a> </td>
+											</tr>
+											{/foreach}
+
+									</table>
+									{/if}
+
+									<br>
+									<!-- BOTON ENVIAR -->
+									<div class="form-group">
+										<div class="col-sm-12">
+											<p> <input class="btn btn-primary btn-lg active" type="submit" value="Terminar Reservacion"></p>
+										</div>
+									</div>
+								</div>  <!--FIN DEL FROM-GROUP-->
+
+									</div>
+			 				</form>
+					</div>	<!--FIN DEL CONTAINER -->
+					{include file='../componentes/footer.html'}
+			 </div>
+
+
+	    </div>
+
+	    <!-- CODIGO JAVASCRIPT -->
+	    <script src="../js/jquery.js"></script>
+	    <script src="../js/bootstrap/bootstrap.min.js"></script>
+	</body>
+	</html>

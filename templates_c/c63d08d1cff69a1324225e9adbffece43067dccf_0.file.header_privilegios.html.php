@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-12 04:05:58
+/* Smarty version 3.1.30, created on 2016-12-13 10:43:16
   from "C:\xampp\htdocs\hotel_proyect\templates\componentes\header_privilegios.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_584e1416092f18_84141734',
+  'unifunc' => 'content_584fc2b4a1eff0_01675772',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c63d08d1cff69a1324225e9adbffece43067dccf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\componentes\\header_privilegios.html',
-      1 => 1481511845,
+      1 => 1481622192,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_584e1416092f18_84141734 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584fc2b4a1eff0_01675772 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- header privilegios -->
 <header>
@@ -46,7 +46,7 @@ function content_584e1416092f18_84141734 (Smarty_Internal_Template $_smarty_tpl)
             <span class="icon-bar"></span>
           </button>
           <!-- Titulo de la pagina web -->
-          <a class="navbar-brand" href="index.php">Hotel Dumort</a>
+          <a class="navbar-brand" href="../index.php">Hotel Dumort</a>
         </div>
 
         <!-- Inicia el menu-->

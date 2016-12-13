@@ -5,12 +5,12 @@
   $templates->setTemplateDir("../templates/cliente");
 
   // Validacion para saber que tipo de header construir
-	 if(isset($_SESSION)){
-	 	$privilegio=$_SESSION['roles'][0]['rol'];
-	 }
 
-	$web->checarAcceso($privilegio); // policia
-	$header=$web->Privilegiosheader($privilegio); //Crea el header
+  $privilegio=$web->obtenerRolSesion();
+
+  //Login es el usuario predeterminado
+  $web->checarAcceso($privilegio);
+  $header=$web->Privilegiosheader($privilegio);
 
   $email = "";
   if(isset($_SESSION['email'])){

@@ -18,15 +18,15 @@
 							from usuario where id_usuario='.$_SESSION['id_usuario']);
 
 
-		if(!empty ($usuario)){
+		if(empty ($usuario)){
 			//no hay foto
-			$templates->assign('flag','true');
-		
+			$templates->assign('flag','false');
+
 		}
 		else {
 			//si hay foto
-			$templates->assign('flag','false');
-			
+			$templates->assign('flag','true');
+
 		}
 
 		//Asigno variables

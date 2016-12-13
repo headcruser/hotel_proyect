@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-09 07:54:00
+/* Smarty version 3.1.30, created on 2016-12-12 04:38:17
   from "C:\xampp\htdocs\hotel_proyect\templates\contador\consumo_form.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_584a5508c85754_61850504',
+  'unifunc' => 'content_584e1ba92b1e71_51131688',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd47d89d104d9cbba5ac7c29e46fa7818105c3eb4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\contador\\consumo_form.html',
-      1 => 1481266395,
+      1 => 1481266505,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:componentes/js.html' => 1,
   ),
 ),false)) {
-function content_584a5508c85754_61850504 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584e1ba92b1e71_51131688 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>

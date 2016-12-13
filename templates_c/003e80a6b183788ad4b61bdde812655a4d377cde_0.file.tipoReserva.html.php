@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-07 06:18:03
+/* Smarty version 3.1.30, created on 2016-12-12 04:48:20
   from "C:\xampp\htdocs\hotel_proyect\templates\contador\tipoReserva.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58479b8b229fb2_58554631',
+  'unifunc' => 'content_584e1e04832bf9_20327378',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '003e80a6b183788ad4b61bdde812655a4d377cde' => 
     array (
       0 => 'C:\\xampp\\htdocs\\hotel_proyect\\templates\\contador\\tipoReserva.html',
-      1 => 1480873568,
+      1 => 1481268135,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:componentes/js.html' => 1,
   ),
 ),false)) {
-function content_58479b8b229fb2_58554631 (Smarty_Internal_Template $_smarty_tpl) {
+function content_584e1e04832bf9_20327378 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
+<!-- vista de los tipos de reservacion -->
 <!DOCTYPE html>
 <html>
   <head>
